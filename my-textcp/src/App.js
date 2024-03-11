@@ -44,7 +44,7 @@ function TextExpander({
   children,
   box,
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
@@ -52,15 +52,15 @@ function TextExpander({
   return (
     <div>
       {expanded ? (
-        <span>{children}</span>
-      ) : (
         <span>
+          {" "}
           {children.split(" ").splice(0, collapsedNumWords).join(" ")}
         </span>
+      ) : (
+        <span>{children}</span>
       )}
-
       <button onClick={toggleExpand}>
-        {expanded ? collapseButtonText : expandButtonText}
+        {expanded ? expandButtonText : collapseButtonText}
       </button>
     </div>
   );
