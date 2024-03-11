@@ -4,7 +4,13 @@ import "./index.css";
 export default function App() {
   return (
     <div>
-      <TextExpander>
+      <TextExpander
+        expanded={true}
+        collapsedNumWords={20}
+        expandButtonText="Show text"
+        collapseButtonText="Collapse text"
+        buttonColor="#ff6622"
+      >
         Space travel is the ultimate adventure! Imagine soaring past the stars
         and exploring new worlds. It's the stuff of dreams and science fiction,
         but believe it or not, space travel is a real thing. Humans and robots
@@ -13,6 +19,7 @@ export default function App() {
       </TextExpander>
 
       <TextExpander
+        expanded={true}
         collapsedNumWords={20}
         expandButtonText="Show text"
         collapseButtonText="Collapse text"
@@ -25,7 +32,14 @@ export default function App() {
         foot on the moon or when rovers were sent to roam around on Mars.
       </TextExpander>
 
-      <TextExpander expanded={true} className="box">
+      <TextExpander
+        expanded={true}
+        collapsedNumWords={20}
+        expandButtonText="Show text"
+        collapseButtonText="Collapse text"
+        buttonColor="#ff6622"
+        className="box"
+      >
         Space missions have given us incredible insights into our universe and
         have inspired future generations to keep reaching for the stars. Space
         travel is a pretty cool thing to think about. Who knows what we'll
@@ -44,37 +58,20 @@ function TextExpander({
   children,
   box,
 }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
+
   return (
     <div>
-      {expanded ? (
-        <span>{children.substring(0, 20)}</span>
-      ) : (
-        <span>
-          <span>
-            {children}
-            {children}
-            {children}
-          </span>
-        </span>
-      )}
+      <span>
+        {expanded ? children : children.substring(0, collapsedNumWords)}
+      </span>
       <button onClick={toggleExpand}>
-        {expanded ? expandButtonText : collapseButtonText}
+        {expanded ? collapseButtonText : expandButtonText}
       </button>
     </div>
   );
 }
-
-//   expanded ? (
-//     <span> {children.split(" ").splice(0, collapsedNumWords).join(" ")}</span>
-//   ) : (
-//     <span>{children}</span>
-//   );
-// }
-// <button onClick={toggleExpand}>
-//   {expanded ? expandButtonText : collapseButtonText}
-// </button>;
