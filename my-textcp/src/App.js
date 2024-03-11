@@ -52,12 +52,15 @@ function TextExpander({
   return (
     <div>
       {expanded ? (
-        <span>
-          {" "}
-          {children.split(" ").splice(0, collapsedNumWords).join(" ")}
-        </span>
+        <span>{children.substring(0, 20)}</span>
       ) : (
-        <span>{children}</span>
+        <span>
+          <span>
+            {children}
+            {children}
+            {children}
+          </span>
+        </span>
       )}
       <button onClick={toggleExpand}>
         {expanded ? expandButtonText : collapseButtonText}
@@ -65,3 +68,13 @@ function TextExpander({
     </div>
   );
 }
+
+//   expanded ? (
+//     <span> {children.split(" ").splice(0, collapsedNumWords).join(" ")}</span>
+//   ) : (
+//     <span>{children}</span>
+//   );
+// }
+// <button onClick={toggleExpand}>
+//   {expanded ? expandButtonText : collapseButtonText}
+// </button>;
