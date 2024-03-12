@@ -60,18 +60,24 @@ function TextExpander({
   collapseButtonText,
   children,
   color,
+  styles,
 }) {
   const [expanded, setExpanded] = useState(false);
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
 
+  // const styles = {
+  //   color: "red",
+  //   padding: 10px,
+  // };
+
   return (
     <div>
       <span>
         {expanded ? children : children.substring(0, collapsedNumWords)}
       </span>
-      <button buttonColor={color} onClick={toggleExpand}>
+      <button styles={styles} buttonColor={color} onClick={toggleExpand}>
         {expanded ? collapseButtonText : expandButtonText}
       </button>
     </div>
