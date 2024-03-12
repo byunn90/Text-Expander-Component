@@ -38,8 +38,8 @@ export default function App() {
         <TextExpander
           expanded={true}
           collapsedNumWords={20}
-          expandButtonText="Show text"
-          collapseButtonText="Collapse text"
+          expandButtonText="Show More"
+          collapseButtonText="Show Less"
           buttonColor="#ff6622"
           className="box"
         >
@@ -56,13 +56,15 @@ export default function App() {
 // When clicked, show the rest of the text and apply some CSS
 function TextExpander({
   collapsedNumWords,
-  expandButtonText,
+  expandButtonText = "Show More",
   collapseButtonText,
   children,
   color,
   styles,
+  className,
 }) {
   const [expanded, setExpanded] = useState(false);
+
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
@@ -75,7 +77,9 @@ function TextExpander({
   return (
     <div>
       <span>
-        {expanded ? children : children.substring(0, collapsedNumWords)}
+        {expanded
+          ? children
+          : children.split(" ").slice(0, collapsedNumWords).join("  ")}
       </span>
       <button styles={styles} buttonColor={color} onClick={toggleExpand}>
         {expanded ? collapseButtonText : expandButtonText}
