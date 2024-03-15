@@ -75,7 +75,7 @@ function TextExpander({
     border: "none",
     font: "inherit",
     cursor: "pointer",
-    marginLeft: "5px",
+    marginLeft: "6px",
     color: buttonColor,
   };
 
